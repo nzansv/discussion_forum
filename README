@@ -1,0 +1,3 @@
+Here is web application with functionality of login and registration by Post methods through Servlets. 
+In first page there is message, after which user should sign in\up.
+After user fullfill all forms and all data will post through Servlet.
