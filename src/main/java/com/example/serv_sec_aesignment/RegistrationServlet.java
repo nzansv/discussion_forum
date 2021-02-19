@@ -21,8 +21,6 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
         requestDispatcher.forward(request, response);
-        Cookie ck=new Cookie("username",username);
-        response.addCookie(ck);
     }
 
 }

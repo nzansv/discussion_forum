@@ -14,15 +14,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="auth.jsp">Sign in </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="register.jsp">Sign up<span class="sr-only">(current)</span> </a>
-            </li>
+            <form action="SignOutServlet" method="post">
+                <input class="btn btn-outline-secondary"  type="submit" value="Sign Out" >
+            </form>
         </ul>
     </div>
 </nav>
@@ -30,11 +24,24 @@
 <br>
 <br>
 <div class="alert alert-success">
-    <ul>
-        <li>Username: <strong><%= request.getParameter("username") %></strong></li>
-        <li>Email: <strong><%= request.getParameter("email") %></strong></li>
-        <li>Password: <strong><%= request.getParameter("password") %></strong></li>
-    </ul>
+    <%
+        String username = (String) session.getAttribute("username");
+        String userName = null;
+        String sessionID = null;
+        Cookie[] cookies = request.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("username")) userName = cookie.getValue();
+                if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+            }
+        }
+    %>
+    <h3>Username: <%=userName%></h3>
+    <h3>Session ID=<%=sessionID %></h3>
+    <br>
+    <br>
+    Username=<%=username %>
+    <br>
 </div>
 </body>
 </html>
