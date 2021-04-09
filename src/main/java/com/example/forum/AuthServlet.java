@@ -1,4 +1,4 @@
-package com.example.serv_sec_aesignment;
+package com.example.forum;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,10 +10,13 @@ import java.io.IOException;
 public class AuthServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserBean user = new UserBean();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        user.setUsername(username);
+        user.setPassword(password);
         HttpSession session = request.getSession();
-        session.setAttribute("username", username);
+        session.setAttribute("user", user);
         session.setMaxInactiveInterval(30*60);
         Cookie userName = new Cookie("username", username);
         userName.setMaxAge(30*60);

@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<jsp:useBean id = "post" class = "com.example.forum.PostBean">
+    <jsp:setProperty name = "post" property = "username" value = "Bob"/>
+    <jsp:setProperty name = "post" property = "content" value = "Lorem ipsum dolor sit amet, id nec conceptam conclusionemque. Et eam tation option. Utinam salutatus ex eum. Ne mea dicit tibique facilisi, ea mei omittam explicari conclusionemque, ad nobis propriae quaerendum sea."/>
+    <jsp:setProperty name = "post" property = "like_counter" value = "10"/>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,26 +27,39 @@
 </div>
 <br>
 <br>
-<div class="alert alert-success">
-    <%
-        String username = (String) session.getAttribute("username");
-        String userName = null;
-        String sessionID = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies !=null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("username")) userName = cookie.getValue();
-                if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-            }
-        }
-    %>
-    <h3>Username: <%=userName%></h3>
-    <h3>Session ID=<%=sessionID %></h3>
-    <br>
-    <br>
-    Username=<%=username %>
-    <br>
+
+<div class="row" style="margin-left: 30px">
+    <div class="span8">
+        <div class="row">
+            <div class="span8">
+                <h4><strong><a href="#">Title of the post</a></strong></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <p>
+                    <jsp:getProperty name = "post" property = "content"/>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span8">
+                <p></p>
+                <p>
+                    <i class="icon-user"></i> by <a href="#">
+                    <jsp:getProperty name = "post" property = "username"/>
+                </a>
+                    | <i class="icon-calendar"></i> April 09th, 2021
+                    | <i class="icon-comment"></i> <a href="#">3 Comments</a>
+                </p>
+                </jsp:useBean>
+            </div>
+        </div>
+    </div>
 </div>
+<hr>
+
+
 </body>
 </html>
 

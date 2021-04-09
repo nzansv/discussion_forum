@@ -23,26 +23,36 @@
 </div>
 <br>
 <br>
-<div class="alert alert-success">
-    <%
-        String username = (String) session.getAttribute("username");
-        String userName = null;
-        String sessionID = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies !=null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("username")) userName = cookie.getValue();
-                if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-            }
-        }
-    %>
-    <h3>Username: <%=userName%></h3>
-    <h3>Session ID=<%=sessionID %></h3>
-    <br>
-    <br>
-    Username=<%=username %>
-    <br>
+
+<div class="row" style="margin-left: 30px">
+    <div class="span8">
+        <div class="row">
+            <div class="span8">
+                <h4><strong><a href="#">Title of the post</a></strong></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <p>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span8">
+                <p></p>
+                <p>
+                    <i class="icon-user"></i> by <a href="#">
+                </a>
+                    | <i class="icon-calendar"></i> April 09th, 2021
+                    | <i class="icon-comment"></i> <a href="#">3 Comments</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+<hr>
+
+
 </body>
 </html>
 

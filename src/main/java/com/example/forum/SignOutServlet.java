@@ -1,4 +1,4 @@
-package com.example.serv_sec_aesignment;
+package com.example.forum;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
